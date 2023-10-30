@@ -6,9 +6,11 @@ use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -34,12 +36,26 @@ class CategoryResource extends Resource
                 Forms\Components\TextInput::make('description')
                     ->label('Deskripsi')
                     ->required()
-                    ->maxLength(255),
+                    ->columnSpan('full')
+                    ->maxLength(500),
                     //gambar file upload
                 Forms\Components\FileUpload::make('image')
                     ->label('Gambar')
                     ->required()
+                    ->columnSpan('full')
+                    ->directory('images')
+                    ->visibility('public')
                     ->image(),
+                Toggle::make('is_info')
+                    ->label('Tetapkan sebagai Info Berita di Beranda')
+                    ->onColor('success')
+                    ->offColor('danger'),
+                Toggle::make('is_public')
+                    ->label('Tetapkan Kategori Informasi Publik')
+                    ->hint('Kategori ini akan ditampilkan di halaman Informasi Publik juga dibagian top menu')
+                    ->onColor('success')
+                    ->offColor('danger'),
+
             ]);
     }
 
@@ -52,6 +68,11 @@ class CategoryResource extends Resource
                 Tables\Columns\TextColumn::make('slug')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('description')->sortable()->searchable(),
                 Tables\Columns\ImageColumn::make('image'),
+                ToggleColumn::make('is_info')
+                ->label('Info Satker'),
+                ToggleColumn::make('is_public')
+                ->onColor('success')
+                ->label('Publik Informasi'),
               ])
             ])
             ->filters([

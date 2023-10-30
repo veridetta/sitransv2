@@ -6,7 +6,7 @@ $configData = Helper::appClasses();
   <div class="{{$containerNav}} d-flex h-100">
     <ul class="menu-inner">
       <li class="menu-item">
-        <a href="#" class="menu-link">
+        <a href="{{$profile->server}}" class="menu-link">
           <div>Dashboard</div>
         </a>
       </li>
@@ -16,11 +16,13 @@ $configData = Helper::appClasses();
           <div>Tentang</div>
         </a>
         <ul class="menu-sub">
+          @foreach ($about as $a)
           <li class="menu-item">
-            <a href="#" class="menu-link">
-              <div>Visi & Misi</div>
+            <a href="{{ route('pages', ['slug' => $a->slug]) }}" class="menu-link">
+              <div>{{$a->title}}</div>
             </a>
           </li>
+          @endforeach
         </ul>
       </li>
       <li class="menu-item">
@@ -29,11 +31,13 @@ $configData = Helper::appClasses();
           <div>Unit Kerja</div>
         </a>
         <ul class="menu-sub">
+          @foreach ($unit as $u)
           <li class="menu-item">
-            <a href="#" class="menu-link">
-              <div>Sekjen</div>
+            <a href="{{ $u->url }}" class="menu-link">
+              <div>{{$u->unit}}</div>
             </a>
           </li>
+          @endforeach
         </ul>
       </li>
       <li class="menu-item">
@@ -42,11 +46,13 @@ $configData = Helper::appClasses();
           <div>Informasi Publik</div>
         </a>
         <ul class="menu-sub">
+          @foreach ($infoPublic as $u)
           <li class="menu-item">
-            <a href="#" class="menu-link">
-              <div>Berita Kemaritiman</div>
+            <a href="{{ route('categories', ['slug' => $u->slug]) }}" class="menu-link">
+              <div>{{$u->category}}</div>
             </a>
           </li>
+          @endforeach
         </ul>
       </li>
       <li class="menu-item">
@@ -55,22 +61,14 @@ $configData = Helper::appClasses();
           <div>POKJA</div>
         </a>
         <ul class="menu-sub">
+          @foreach ($pokja as $p)
           <li class="menu-item">
-            <a href="#" class="menu-link">
-              <div>Sekjen</div>
+            <a href="{{ $u->url }}" class="menu-link">
+              <div>{{$p->title}}</div>
             </a>
           </li>
+          @endforeach
         </ul>
-      </li>
-      <li class="menu-item">
-        <a href="#" class="menu-link">
-          <div>SID</div>
-        </a>
-      </li>
-      <li class="menu-item">
-        <a href="#" class="menu-link">
-          <div>PID</div>
-        </a>
       </li>
     </ul>
   </div>

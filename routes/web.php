@@ -20,3 +20,7 @@ $controller_path = 'App\Http\Controllers';
 
 // Main Page Route
 Route::get('/', [Controller::class, 'index'])->name('welcome');
+//buat untuk halaman pages yang nantinya pakai slug
+Route::get('/pages/{slug}', [Controller::class, 'pages'])->name('pages');
+Route::get('/news/{slug}', [Controller::class, 'news'])->name('news');
+Route::get('/categories/{slug}', [Controller::class, 'categories'])->name('categories');
