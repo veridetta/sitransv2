@@ -131,7 +131,7 @@
           <div class="card">
             <div class="card-body">
               <div class="divider divider-primary">
-                <div class="divider-text"><h5>INFO SATKER</h5></div>
+                <div class="divider-text"><h5>BERITA PILIHAN</h5></div>
               </div>
               @foreach ($info as $article)
                 @if(!empty($article->content))

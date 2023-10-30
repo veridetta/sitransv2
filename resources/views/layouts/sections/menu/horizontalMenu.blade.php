@@ -25,21 +25,23 @@ $configData = Helper::appClasses();
           @endforeach
         </ul>
       </li>
+      <!-- UNIT KERJA
       <li class="menu-item">
         <a href="#" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons ti ti-smart-briefcase"></i>
           <div>Unit Kerja</div>
         </a>
         <ul class="menu-sub">
-          @foreach ($unit as $u)
+          foreach ($unit as $u)
           <li class="menu-item">
-            <a href="{{ $u->url }}" class="menu-link">
-              <div>{{$u->unit}}</div>
+            <a href="{ $u->url }}" class="menu-link">
+              <div>{$u->unit}}</div>
             </a>
           </li>
-          @endforeach
+          endforeach
         </ul>
       </li>
+        UNIT KERJA -->
       <li class="menu-item">
         <a href="#" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons ti ti-smart-briefcase"></i>
@@ -55,21 +57,23 @@ $configData = Helper::appClasses();
           @endforeach
         </ul>
       </li>
+      <!-- POKJA
       <li class="menu-item">
         <a href="#" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons ti ti-smart-users"></i>
           <div>POKJA</div>
         </a>
         <ul class="menu-sub">
-          @foreach ($pokja as $p)
+          foreach ($pokja as $p)
           <li class="menu-item">
-            <a href="{{ $u->url }}" class="menu-link">
-              <div>{{$p->title}}</div>
+            <a href="{ $u->url }}" class="menu-link">
+              <div>{$p->title}}</div>
             </a>
           </li>
-          @endforeach
+          endforeach
         </ul>
       </li>
+       / POKJA -->
     </ul>
   </div>
 </aside>
