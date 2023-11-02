@@ -164,15 +164,21 @@
     galleryInstance = new Swiper(galleryThumbs, {
       spaceBetween: 10,
       slidesPerView: 4,
-      freeMode: true,
+      //freeMode: true,
       watchSlidesVisibility: true,
-      watchSlidesProgress: true
+      watchSlidesProgress: true,
+      loop: true
     });
   }
 
   if (galleryTop) {
     new Swiper(galleryTop, {
       spaceBetween: 10,
+      loop: true, // Aktifkan mode infinity
+      autoplay: {
+          delay: 3000, // Waktu antara slide
+          disableOnInteraction: false,
+      },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'

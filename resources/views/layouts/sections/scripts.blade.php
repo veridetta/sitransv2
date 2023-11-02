@@ -36,19 +36,6 @@
   });
 </script>
 <script>
-  // Initialize the top swiper
-  var topSwiper = new Swiper('.gallery-top', {
-      loop: true, // Aktifkan mode infinity
-      autoplay: {
-          delay: 3000, // Waktu antara slide
-          disableOnInteraction: false,
-      },
-      navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-      },
-  });
-
   // Initialize the thumbs swiper
   var thumbsSwiper = new Swiper('.gallery-thumbs', {
       spaceBetween: 10,

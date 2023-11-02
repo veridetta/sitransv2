@@ -31,15 +31,12 @@
                 @endif
                 <div class="d-flex mb-3">
                   <div class="flex-shrink-0">
-                    <img src="{{$firstImage}}" alt="{{$article->slug}}" class="me-3" height="38">
+                    <img src="{{$firstImage}}" alt="{{$article->slug}}" class="me-3" height="38" width="38">
                   </div>
-                  <div class="flex-grow-1 row">
-                    <div class="col-7 mb-sm-0 mb-2">
-                      <h6 class="mb-0 isOpenUrl" link="{{ route('news', ['slug' => $article->slug]) }}"><a href="#">{{Str::limit($article->title, 50, '...')}}</a></h6>
-                      <small class="text-muted"><i class="fa fa-calendar"></i> {{$article->date}}</small>
-                    </div>
-                    <div class="col-5 text-end">
-                      <button class="btn btn-label-secondary btn-icon waves-effect isOpenUrl" link="{{ route('news', ['slug' => $article->slug]) }}"><i class="ti ti-link ti-sm"></i></button>
+                  <div class="d-flex row">
+                    <div class="col-12 mb-sm-0 mb-2">
+                      <h6 class="mb-0 isOpenUrl  text-start" link="{{ route('news', ['slug' => $article->slug]) }}"><a href="#">{{Str::limit($article->title, 20, '...')}}</a></h6>
+                      <small class="text-muted  text-start"><i class="fa fa-calendar"></i> {{$article->date}}</small>
                     </div>
                   </div>
                 </div>
@@ -51,9 +48,9 @@
             <div class="flex-shrink-0">
               <span class="badge bg-label-primary p-2 rounded"><i class="ti ti-bell ti-sm"></i></span>
             </div>
-            <div class="flex-grow-1 row">
-              <div class="col-7 mb-sm-0 mb-2">
-                <p class="mb-0"> {{$an->content}}</p>
+            <div class="d-flex row">
+              <div class="col-12 mb-sm-0 mb-2 px-3">
+                <p class="mb-0 text-start"> {{$an->content}}</p>
               </div>
             </div>
           </div>
@@ -86,7 +83,7 @@
       <div class="divider divider-primary">
         <div class="divider-text"><h5>Cuitan Terbaru</h5></div>
       </div>
-      <a class="twitter-timeline" data-chrome="noheader noborders transparent nofooter" data-width="600" data-height="600"  data-tweet-limit="1" href="https://twitter.com/kemkominfo?ref_src=twsrc%5Etfw">Tweets by kemkominfo</a>
+      <a class="twitter-timeline" data-chrome="noheader noborders transparent nofooter" data-width="600" data-height="600"  data-tweet-limit="1" href="https://twitter.com/{{$profile->twitter}}?ref_src=twsrc%5Etfw">Tweets by kemkominfo</a>
     </div>
   </div>
   <!-- / Twitter -->

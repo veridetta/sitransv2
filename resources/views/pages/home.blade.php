@@ -49,7 +49,7 @@
   <div class="col-12">
     <!-- FEATURED BANNER-->
     <div id="swiper-gallery">
-      <div class="swiper gallery-top">
+      <div class="swiper gallery-top swiper-initialized swiper-horizontal swiper-backface-hidden">
         <div class="swiper-wrapper">
           @foreach ($banner as $ban)
           <div class="swiper-slide isOpenUrl" link="{{$ban->url}}" style="background-image:url({{$profile->server.'storage/'.$ban->image}})"></div>
@@ -60,7 +60,7 @@
         <div class="swiper-button-next swiper-button-white"></div>
         <div class="swiper-button-prev swiper-button-white"></div>
       </div>
-      <div class="swiper gallery-thumbs">
+      <div class="swiper gallery-thumbs  swiper-initialized swiper-horizontal swiper-free-mode swiper-watch-progress swiper-backface-hidden swiper-thumbs">
         <div class="swiper-wrapper">
           @foreach ($banner as $ban)
           <div class="swiper-slide" link="{{$ban->url}}" style="background-image:url({{$profile->server.'storage/'.$ban->image}})"></div>
@@ -151,11 +151,11 @@
                 @endif
                 <div class="d-flex mb-3">
                   <div class="flex-shrink-0">
-                    <img src="{{$firstImage}}" alt="{{$article->slug}}" class="me-3" height="38">
+                    <img src="{{$firstImage}}" alt="{{$article->slug}}" class="me-3" height="50" width="50">
                   </div>
                   <div class="flex-grow-1 row">
                     <div class="col-7 mb-sm-0 mb-2">
-                      <h6 class="mb-0 isOpenUrl" link="{{ route('news', ['slug' => $article->slug]) }}"><a href="#">{{Str::limit($article->title, 50, '...')}}</a></h6>
+                      <h6 class="mb-0 isOpenUrl" link="{{ route('news', ['slug' => $article->slug]) }}"><a href="#">{{Str::limit($article->title, 30, '...')}}</a></h6>
                       <small class="text-muted"><i class="fa fa-calendar"></i> {{$article->date}}</small>
                     </div>
                     <div class="col-5 text-end">
@@ -191,11 +191,11 @@
                 @endif
                 <div class="d-flex mb-3">
                   <div class="flex-shrink-0">
-                    <img src="{{$firstImage}}" alt="{{$article->slug}}" class="me-3" height="38">
+                    <img src="{{$firstImage}}" alt="{{$article->slug}}" class="me-3" height="50" width="50">
                   </div>
                   <div class="flex-grow-1 row">
                     <div class="col-7 mb-sm-0 mb-2">
-                      <h6 class="mb-0 isOpenUrl" link="{{ route('news', ['slug' => $article->slug]) }}"><a href="#">{{Str::limit($article->title, 50, '...')}}</a></h6>
+                      <h6 class="mb-0 isOpenUrl" link="{{ route('news', ['slug' => $article->slug]) }}"><a href="#">{{Str::limit($article->title, 30, '...')}}</a></h6>
                       <small class="text-muted"><i class="fa fa-calendar"></i> {{$article->date}}</small>
                     </div>
                     <div class="col-5 text-end">
