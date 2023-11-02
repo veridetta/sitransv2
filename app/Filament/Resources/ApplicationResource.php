@@ -34,6 +34,7 @@ class ApplicationResource extends Resource
               Forms\Components\FileUpload::make('image')
                   ->label('Gambar')
                   ->required()
+                  ->directory('images')
                   ->columnSpan('full')
                   ->image(),
             ]);

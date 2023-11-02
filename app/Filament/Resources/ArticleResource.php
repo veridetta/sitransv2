@@ -7,6 +7,7 @@ use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Models\Article;
 use App\Models\Category;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Resource;
@@ -39,7 +40,7 @@ class ArticleResource extends Resource
                   ->label('Konten')
                   ->columnSpan('full')
                   ->required(),
-              Forms\Components\Datepicker::make('date')
+              DatePicker::make('date')
                   ->label('Tanggal')
                   ->required(),
               Forms\Components\Select::make('category_id')
