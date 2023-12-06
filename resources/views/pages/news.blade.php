@@ -40,6 +40,14 @@
 
 @section('page-script')
 <script src="{{asset('assets/js/ui-carousel.js')}}"></script>
+<script>
+$(document).ready(function() {
+  // Select all img elements within the content
+  var images = $("#content-article img");
+  // Add max-width: 100% style to each img element
+  images.css("max-width", "100%");
+});
+</script>
 @endsection
 
 @section('content')
@@ -52,7 +60,7 @@
       <div class="card">
         <div class="card-body">
           <h2 class="card-title">{{$content->title}}</h2>
-          <div class="row d-flex justify-content-start">
+          <div class="row d-flex justify-content-start" id="content-article">
             {!! $content->content !!}
           </div>
         </div>

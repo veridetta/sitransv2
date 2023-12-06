@@ -17,7 +17,10 @@ class SideBannerResource extends Resource
 {
     protected static ?string $model = SideBanner::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-photo';
+    protected static ?string $navigationGroup = 'Halaman Statis';
+    protected static ?int $navigationSort = 3;
+    protected static ?string $navigationLabel="Side Banner";
 
     public static function form(Form $form): Form
     {

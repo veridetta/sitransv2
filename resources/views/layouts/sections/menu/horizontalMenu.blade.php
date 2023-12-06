@@ -25,6 +25,11 @@ $configData = Helper::appClasses();
           @endforeach
         </ul>
       </li>
+      <li class="menu-item">
+        <a href="{{route('gis')}}" class="menu-link">
+          <div>Peta Transmigrasi</div>
+        </a>
+      </li>
       <!-- UNIT KERJA
       <li class="menu-item">
         <a href="#" class="menu-link menu-toggle">

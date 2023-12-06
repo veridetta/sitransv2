@@ -45,7 +45,6 @@ $containerNav = ($containerNav ?? 'container-xxl');
     <!-- Layout page -->
     <div class="layout-page">
       <div class="content-wrapper">
-
         @if ($isMenu)
         @include('layouts/sections/menu/horizontalMenu')
         @endif
@@ -67,6 +66,7 @@ $containerNav = ($containerNav ?? 'container-xxl');
           <!-- / Footer -->
           <div class="content-backdrop fade"></div>
         </div>
+        <div class="h-3 bg-primary w-100 " style="top: 149px !important;position: fixed;height:10px !important"></div>
       </div>
     </div>
     <!-- / Layout Container -->

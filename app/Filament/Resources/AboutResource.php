@@ -17,7 +17,10 @@ class AboutResource extends Resource
 {
     protected static ?string $model = About::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-information-circle';
+    protected static ?string $navigationGroup = 'Halaman Statis';
+    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationLabel="Tentang Website";
 
     public static function form(Form $form): Form
     {
@@ -47,7 +50,7 @@ class AboutResource extends Resource
             ->columns([
               Tables\Columns\Layout\Split::make([
                 Tables\Columns\TextColumn::make('title')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('content')->limit(100),
+                Tables\Columns\TextColumn::make('content')->limit(100)->html(),
                 Tables\Columns\TextColumn::make('author')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('date')->sortable()->searchable(),
                 Tables\Columns\TextColumn::make('slug')->sortable()->searchable(),

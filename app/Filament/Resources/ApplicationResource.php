@@ -18,7 +18,10 @@ class ApplicationResource extends Resource
 {
     protected static ?string $model = Application::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-calculator';
+    protected static ?string $navigationGroup = 'Halaman Navigasi';
+    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationLabel="Aplikasi";
 
     public static function form(Form $form): Form
     {

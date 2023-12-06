@@ -12,9 +12,11 @@ use App\Models\Pokja;
 use App\Models\Profile;
 use App\Models\SideBanner;
 use App\Models\Unit;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
@@ -114,5 +116,28 @@ class Controller extends BaseController
         ->get();
       //return
       return view('pages.category',['pageConfigs'=> $pageConfigs,'profile'=>$profile,'about'=>$about,'unit'=>$unit,'pokja'=>$pokja,'content'=>$content,'related'=>$related,'popular'=>$popular,'infoPublic'=>$infoPublic,'category'=>$category]);
+    }
+    public function search(Request $request)
+    {
+      $query = $request->get('query');
+      //WAJIB
+      $profile = Profile::first();
+      $about = About::all();
+      $unit = Unit::all();
+      $pokja = Pokja::all();
+      $pageConfigs = ['myLayout' => 'horizontal'];
+      $infoPublic = Category::where('is_public', '1')->get();
+      //WAJIB
+      $popular = Article::orderBy('visitor','desc')->take(5)->get();
+      //ambil data dari about where slug
+      $perPage = 10; // Gantilah dengan jumlah item yang ingin ditampilkan per halaman
+      $content = Article::where('title','like','%'.$query.'%')->orderBy('created_at', 'desc')->paginate($perPage);
+      $related = Article::
+        orderBy('created_at', 'desc')
+        ->take(5)
+        ->get();
+      //return
+
+      return view('pages.search',['pageConfigs'=> $pageConfigs,'profile'=>$profile,'about'=>$about,'unit'=>$unit,'pokja'=>$pokja,'content'=>$content,'related'=>$related,'popular'=>$popular,'infoPublic'=>$infoPublic,'query'=>$query]);
     }
 }

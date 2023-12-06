@@ -36,7 +36,7 @@
                   <div class="d-flex row">
                     <div class="col-12 mb-sm-0 mb-2">
                       <h6 class="mb-0 isOpenUrl  text-start" link="{{ route('news', ['slug' => $article->slug]) }}"><a href="#">{{Str::limit($article->title, 20, '...')}}</a></h6>
-                      <small class="text-muted  text-start"><i class="fa fa-calendar"></i> {{$article->date}}</small>
+                      <p class="text-muted  text-start text-sm"><i class="fa fa-calendar"></i> {{$article->date}}</p>
                     </div>
                   </div>
                 </div>

@@ -8,7 +8,7 @@ $navbarDetached = ($navbarDetached ?? '');
 <nav class="layout-navbar {{$containerNav}} navbar navbar-expand-xl {{$navbarDetached}} align-items-center bg-navbar-theme" id="layout-navbar">
   @endif
   @if(isset($navbarDetached) && $navbarDetached == '')
-  <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar">
+  <nav class="layout-navbar navbar navbar-expand-xl align-items-center bg-navbar-theme" id="layout-navbar"  style="height:90px !important">
     <div class="{{$containerNav}}">
       @endif
 
@@ -16,7 +16,7 @@ $navbarDetached = ($navbarDetached ?? '');
       @if(isset($navbarFull))
       <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
         <a href="{{url('/')}}" class="app-brand-link gap-2">
-          <span class="app-brand-logo demo">
+          <span class=" demo" style="width: 80px !important">
             <img src="{{$profile->server}}storage/{{$profile->logo}}" alt="Brand Logo" class="img-fluid">
           </span>
           <span class="app-brand-text demo menu-text fw-bold">{{$profile->name}}</span>
@@ -34,26 +34,17 @@ $navbarDetached = ($navbarDetached ?? '');
       @endif
 
       <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-
-        @if(!isset($menuHorizontal))
-        <!-- Search -->
-        <div class="navbar-nav align-items-center">
-          <div class="nav-item navbar-search-wrapper mb-0">
-            <a class="nav-item nav-link search-toggler d-flex align-items-center px-0" href="javascript:void(0);">
-              <i class="ti ti-search ti-md me-2"></i>
-              <span class="d-none d-md-inline-block text-muted">Search (Ctrl+/)</span>
-            </a>
-          </div>
-        </div>
-        <!-- /Search -->
-        @endif
         <ul class="navbar-nav flex-row align-items-center ms-auto">
           @if(isset($menuHorizontal))
           <!-- Search -->
           <li class="nav-item navbar-search-wrapper me-2 me-xl-0">
-            <a class="nav-link search-toggler" href="javascript:void(0);">
-              <i class="ti ti-search ti-md"></i>
-            </a>
+            <form class="nav-link search-toggler" action="{{route('search')}}" method="get">
+              @csrf
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" name="query" placeholder="Cari " aria-label="Cari" aria-describedby="button-addon2">
+                <button type="submit" class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="ti ti-search ti-md"></i></button>
+              </div>
+            </form>
           </li>
           <!-- /Search -->
           @endif
@@ -61,10 +52,6 @@ $navbarDetached = ($navbarDetached ?? '');
       </div>
 
       <!-- Search Small Screens -->
-      <div class="navbar-search-wrapper search-input-wrapper {{ isset($menuHorizontal) ? $containerNav : '' }} d-none">
-        <input type="text" class="form-control search-input {{ isset($menuHorizontal) ? '' : $containerNav }} border-0" placeholder="Search..." aria-label="Search...">
-        <i class="ti ti-x ti-sm search-toggler cursor-pointer"></i>
-      </div>
       @if(isset($navbarDetached) && $navbarDetached == '')
     </div>
     @endif

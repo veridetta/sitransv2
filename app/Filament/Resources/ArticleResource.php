@@ -22,7 +22,10 @@ class ArticleResource extends Resource
 {
     protected static ?string $model = Article::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $navigationGroup = 'Berita';
+    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationLabel="Artikel";
 
     public static function form(Form $form): Form
     {
@@ -62,13 +65,13 @@ class ArticleResource extends Resource
 
             ->columns([
               Tables\Columns\Layout\Split::make([
-                Tables\Columns\TextColumn::make('title')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('author')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('content')->limit(100),
-                Tables\Columns\TextColumn::make('date')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('title')->sortable()->searchable()->label('Judul'),
+                Tables\Columns\TextColumn::make('author')->sortable()->searchable()->label('Penulis'),
+                Tables\Columns\TextColumn::make('content')->limit(100)->html()->label('Konten'),
+                Tables\Columns\TextColumn::make('date')->sortable()->searchable()->label('Tanggal'),
                 //category ambil dari table category dan ambil field category
-                Tables\Columns\TextColumn::make('category.category')->sortable()->searchable(),
-                Tables\Columns\TagsColumn::make('tags')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('category.category')->sortable()->badge()->searchable()->label('Kategori'),
+                Tables\Columns\TagsColumn::make('tags')->sortable()->searchable()->label('Tags'),
               ])
             ])
             ->filters([

@@ -17,7 +17,10 @@ class PokjaResource extends Resource
 {
     protected static ?string $model = Pokja::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-bars-3';
+    protected static ?string $navigationGroup = 'Halaman Navigasi';
+    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationLabel="Navigasi Pokja";
 
     public static function form(Form $form): Form
     {
