@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\GisController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\laravel_example\UserManagement;
 
@@ -24,3 +25,4 @@ Route::get('/', [Controller::class, 'index'])->name('welcome');
 Route::get('/pages/{slug}', [Controller::class, 'pages'])->name('pages');
 Route::get('/news/{slug}', [Controller::class, 'news'])->name('news');
 Route::get('/categories/{slug}', [Controller::class, 'categories'])->name('categories');
+Route::get('/gis', [GisController::class, 'index'])->name('gis');
