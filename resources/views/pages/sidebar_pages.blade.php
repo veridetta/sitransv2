@@ -3,7 +3,7 @@
   <div class="card">
     <div class="card-body">
       <div class="divider divider-primary">
-        <div class="divider-text"><h5>PROFIL {{$profile->name}}</h5></div>
+        <div class="divider-text"><h5 style="text-wrap: balance;">PROFIL {{$profile->name}}</h5></div>
       </div>
       @foreach ($about as $a)
         <p><a href="{{ route('pages', ['slug' => $a->slug]) }}" >

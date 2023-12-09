@@ -27,3 +27,4 @@ Route::get('/news/{slug}', [Controller::class, 'news'])->name('news');
 Route::get('/categories/{slug}', [Controller::class, 'categories'])->name('categories');
 Route::get('/search', [Controller::class, 'search'])->name('search');
 Route::get('/gis', [GisController::class, 'index'])->name('gis');
+Route::get('/beban', [Controller::class, 'beban'])->name('beban');

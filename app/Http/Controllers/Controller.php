@@ -140,4 +140,17 @@ class Controller extends BaseController
 
       return view('pages.search',['pageConfigs'=> $pageConfigs,'profile'=>$profile,'about'=>$about,'unit'=>$unit,'pokja'=>$pokja,'content'=>$content,'related'=>$related,'popular'=>$popular,'infoPublic'=>$infoPublic,'query'=>$query]);
     }
+    public function beban(){
+      $profile = Profile::first();
+      $about = About::all();
+      $unit = Unit::all();
+      $pokja = Pokja::all();
+      $pageConfigs = ['myLayout' => 'horizontal'];
+      $infoPublic = Category::where('is_public', '1')->get();
+      //WAJIB
+
+      $lastArticle = Article::orderBy('created_at','desc')->take(5)->get();
+
+      return view('pages.beban',['pageConfigs'=> $pageConfigs,'profile'=>$profile,'about'=>$about,'unit'=>$unit,'pokja'=>$pokja,'lastArticle'=>$lastArticle,'infoPublic'=>$infoPublic]);
+    }
 }

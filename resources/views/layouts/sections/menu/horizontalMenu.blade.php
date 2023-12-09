@@ -53,6 +53,11 @@ $configData = Helper::appClasses();
           <div>Informasi Publik</div>
         </a>
         <ul class="menu-sub">
+          <li class="menu-item">
+            <a href="{{ route('beban') }}" class="menu-link">
+              <div>Beban SHM</div>
+            </a>
+          </li>
           @foreach ($infoPublic as $u)
           <li class="menu-item">
             <a href="{{ route('categories', ['slug' => $u->slug]) }}" class="menu-link">
