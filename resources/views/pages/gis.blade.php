@@ -46,13 +46,20 @@ crossorigin=""></script>
 @endsection
 
 @section('page-script')
-<script src="{{asset('assets/js/ui-carousel.js')}}"></script>
 <script>
-  var map = L.map('map').setView([0.946955, 122.545875], 15.38);
+  var map = L.map('map').setView([0.924, 122.623], 7.22);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
+    minZoom: 7.22, // Set minimum zoom level
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
+
+// Set the maximum bounds
+map.setMaxBounds([
+  [0.5, 122], // Southwest coordinates
+  [1.3, 123]  // Northeast coordinates
+]);
+
 //muat geojson dari file
 $.getJSON("{{asset('storage/maps/map.geojson')}}", function(json) {
   var kecamatan = L.geoJson(json, {
@@ -85,7 +92,7 @@ $.getJSON("{{asset('storage/maps/map.geojson')}}", function(json) {
     }
   }).addTo(map);
 
-  map.setView([0.946955, 122.545875], 15.38);
+  map.setView([0.924, 122.623], 7.22);
 });
 </script>
 @endsection

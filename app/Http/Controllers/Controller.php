@@ -153,4 +153,17 @@ class Controller extends BaseController
 
       return view('pages.beban',['pageConfigs'=> $pageConfigs,'profile'=>$profile,'about'=>$about,'unit'=>$unit,'pokja'=>$pokja,'lastArticle'=>$lastArticle,'infoPublic'=>$infoPublic]);
     }
+    public function dokumentasi(){
+      $profile = Profile::first();
+      $about = About::all();
+      $unit = Unit::all();
+      $pokja = Pokja::all();
+      $pageConfigs = ['myLayout' => 'horizontal'];
+      $infoPublic = Category::where('is_public', '1')->get();
+      //WAJIB
+
+      $lastArticle = Article::orderBy('created_at','desc')->take(5)->get();
+
+      return view('pages.dokumentasi',['pageConfigs'=> $pageConfigs,'profile'=>$profile,'about'=>$about,'unit'=>$unit,'pokja'=>$pokja,'lastArticle'=>$lastArticle,'infoPublic'=>$infoPublic]);
+    }
 }

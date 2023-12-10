@@ -28,3 +28,4 @@ Route::get('/categories/{slug}', [Controller::class, 'categories'])->name('categ
 Route::get('/search', [Controller::class, 'search'])->name('search');
 Route::get('/gis', [GisController::class, 'index'])->name('gis');
 Route::get('/beban', [Controller::class, 'beban'])->name('beban');
+Route::get('/dokumentasi', [Controller::class, 'dokumentasi'])->name('dokumentasi');

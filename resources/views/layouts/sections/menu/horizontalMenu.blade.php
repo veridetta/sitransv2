@@ -54,6 +54,11 @@ $configData = Helper::appClasses();
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
+            <a href="{{ route('dokumentasi') }}" class="menu-link">
+              <div>Dokumentasi Kegiatan</div>
+            </a>
+          </li>
+          <li class="menu-item">
             <a href="{{ route('beban') }}" class="menu-link">
               <div>Beban SHM</div>
             </a>
