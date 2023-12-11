@@ -47,23 +47,34 @@ crossorigin=""></script>
 
 @section('page-script')
 <script>
-  var map = L.map('map').setView([0.924, 122.623], 7.22);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  var map = L.map('map').setView([0.924, 122.623], 9.5);
+
+var southWest = [0.5, 121.8];
+var northEast = [1.1, 123];
+var minZoom = map.getZoom();
+
+map.options.minZoom = minZoom;
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    minZoom: 7.22, // Set minimum zoom level
+    minZoom: minZoom,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-// Set the maximum bounds
-map.setMaxBounds([
-  [0.5, 122], // Southwest coordinates
-  [1.3, 123]  // Northeast coordinates
-]);
+map.setMaxBounds([southWest, northEast]);
+
+var centerLat = (southWest[0] + northEast[0]) / 2;
+var centerLng = (southWest[1] + northEast[1]) / 2;
+
+map.setView([centerLat, centerLng], 9.5);
 
 //muat geojson dari file
 $.getJSON("{{asset('storage/maps/map.geojson')}}", function(json) {
+  var latSum = 0, lngSum = 0, count = 0;
   var kecamatan = L.geoJson(json, {
     style: function(feature) {
+      latSum += feature.geometry.coordinates[1];
+      lngSum += feature.geometry.coordinates[0];
+      count++;
       return {
         color: 'blue',
         weight: 2,
@@ -92,7 +103,9 @@ $.getJSON("{{asset('storage/maps/map.geojson')}}", function(json) {
     }
   }).addTo(map);
 
-  map.setView([0.924, 122.623], 7.22);
+  var centerLat = latSum / count;
+  var centerLng = lngSum / count;
+  //map.setView([centerLat, centerLng], 9.5);
 });
 </script>
 @endsection
